@@ -1,0 +1,13 @@
+*.log
+.DS_Store
+node_modules
+coverage/
+.idea/
+docs
+.pytest_cache
+cache/
+.env*
+.gitconfig
+src/run.ts
+dist/run.js
+build/
