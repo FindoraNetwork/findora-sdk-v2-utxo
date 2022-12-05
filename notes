@@ -1,0 +1,12 @@
+
+    "update-v2": "yarn update-core; yarn update-keypair; yarn update-network;yarn update-utxo;",
+    "update-core": "yarn upgrade @findora-network/findora-sdk-v2-core;",
+    "update-keypair": "yarn upgrade @findora-network/findora-sdk-v2-keypair;",
+    "update-network": "yarn upgrade @findora-network/findora-sdk-v2-network;",
+    "update-utxo": "yarn upgrade @findora-network/findora-sdk-v2-utxo;"
+
+
+    "@findora-network/findora-sdk-v2-core": "https://github.com/FindoraNetwork/findora-sdk-v2-core.git#develop",
+    "@findora-network/findora-sdk-v2-keypair": "https://github.com/FindoraNetwork/findora-sdk-v2-keypair.git#develop",
+    "@findora-network/findora-sdk-v2-network": "file:../findora-sdk-v2/findora-sdk-v2-network",
+    "@findora-network/findora-sdk-v2-utxo": "../findora-sdk-v/findora-sdk-v2-utxo",
