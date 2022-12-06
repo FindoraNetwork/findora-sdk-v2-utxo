@@ -110,9 +110,6 @@ var decryptUtxoItem = function (sid, walletInfo, utxoData, memoData) { return __
                     err = error;
                     throw new Error("Can not decode owner memo. Details: \"".concat(err.message, "\""));
                 }
-                console.log('client asset record', assetRecord);
-                console.log('walletInfo', walletInfo);
-                console.log('typeof walletInfo keypair', typeof walletInfo.keypair);
                 _a.label = 2;
             case 2:
                 _a.trys.push([2, 4, , 5]);
@@ -122,7 +119,7 @@ var decryptUtxoItem = function (sid, walletInfo, utxoData, memoData) { return __
                 return [3 /*break*/, 5];
             case 4:
                 error_1 = _a.sent();
-                console.log('client asset record error!');
+                console.log('client asset record error!', error_1);
                 err = error_1;
                 throw new Error("Can not open client asset record to decode. 1 Details: \"".concat(err.message, "\""));
             case 5:
@@ -153,12 +150,7 @@ var getUtxoItem = function (sid, walletInfo) { return __awaiter(void 0, void 0, 
     var utxoDataResult, utxoData, utxoError, memoDataResult, memoData, memoError, item;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0:
-                // if (cachedItem) {
-                //   return cachedItem;
-                // }
-                console.log("Fetching sid \"".concat(sid, "\""));
-                return [4 /*yield*/, findora_sdk_v2_network_1.Network.getUtxo(sid)];
+            case 0: return [4 /*yield*/, findora_sdk_v2_network_1.Network.getUtxo(sid)];
             case 1:
                 utxoDataResult = _a.sent();
                 utxoData = utxoDataResult.response, utxoError = utxoDataResult.error;

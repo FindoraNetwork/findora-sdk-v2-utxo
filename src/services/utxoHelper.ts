@@ -119,9 +119,9 @@ export const decryptUtxoItem = async (
 
   let decryptAssetData;
 
-  console.log('client asset record', assetRecord);
-  console.log('walletInfo', walletInfo);
-  console.log('typeof walletInfo keypair', typeof walletInfo.keypair);
+  // console.log('client asset record', assetRecord);
+  // console.log('walletInfo', walletInfo);
+  // console.log('typeof walletInfo keypair', typeof walletInfo.keypair);
   try {
     decryptAssetData = await ledger.open_client_asset_record(
       assetRecord,
@@ -129,7 +129,7 @@ export const decryptUtxoItem = async (
       walletInfo.keypair,
     );
   } catch (error) {
-    console.log('client asset record error!');
+    console.log('client asset record error!', error);
     const err: Error = error as Error;
     throw new Error(`Can not open client asset record to decode. 1 Details: "${err.message}"`);
   }
@@ -165,7 +165,7 @@ export const getUtxoItem = async (sid: number, walletInfo: WalletKeypar): Promis
   //   return cachedItem;
   // }
 
-  console.log(`Fetching sid "${sid}"`);
+  // console.log(`Fetching sid "${sid}"`);
 
   const utxoDataResult = await Network.getUtxo(sid);
 
