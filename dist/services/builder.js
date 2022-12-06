@@ -59,7 +59,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.buildTransferOperationV2 = exports.buildTransferOperation = exports.getFeeInputs = exports.buildTransferOperationWithFee = exports.getPayloadForFeeInputs = exports.getTransferOperation = exports.getEmptyTransferBuilder = void 0;
+exports.getAnonTransferOperationBuilder = exports.getTransactionBuilder = exports.getBlockHeight = exports.buildTransferOperationV2 = exports.buildTransferOperation = exports.getFeeInputs = exports.buildTransferOperationWithFee = exports.getPayloadForFeeInputs = exports.getTransferOperation = exports.getEmptyTransferBuilder = void 0;
 var findora_sdk_v2_core_1 = require("@findora-network/findora-sdk-v2-core");
 var findora_sdk_v2_network_1 = require("@findora-network/findora-sdk-v2-network");
 var fee = __importStar(require("./fee"));
@@ -382,4 +382,56 @@ var buildTransferOperationV2 = function (walletInfo, recieversInfo) { return __a
     });
 }); };
 exports.buildTransferOperationV2 = buildTransferOperationV2;
+var getBlockHeight = function () { return __awaiter(void 0, void 0, void 0, function () {
+    var _a, stateCommitment, error, _, height, blockCount;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
+            case 0: return [4 /*yield*/, findora_sdk_v2_network_1.Network.getStateCommitment()];
+            case 1:
+                _a = _b.sent(), stateCommitment = _a.response, error = _a.error;
+                if (error) {
+                    throw new Error(error.message);
+                }
+                if (!stateCommitment) {
+                    throw new Error('Could not receive response from state commitement call...');
+                }
+                _ = stateCommitment[0], height = stateCommitment[1];
+                blockCount = BigInt(height);
+                return [2 /*return*/, blockCount];
+        }
+    });
+}); };
+exports.getBlockHeight = getBlockHeight;
+var getTransactionBuilder = function () { return __awaiter(void 0, void 0, void 0, function () {
+    var ledger, blockCount, transactionBuilder;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, (0, findora_sdk_v2_core_1.getLedger)()];
+            case 1:
+                ledger = _a.sent();
+                return [4 /*yield*/, (0, exports.getBlockHeight)()];
+            case 2:
+                blockCount = _a.sent();
+                transactionBuilder = ledger.TransactionBuilder.new(blockCount);
+                return [2 /*return*/, transactionBuilder];
+        }
+    });
+}); };
+exports.getTransactionBuilder = getTransactionBuilder;
+var getAnonTransferOperationBuilder = function () { return __awaiter(void 0, void 0, void 0, function () {
+    var ledger, blockCount, anonTransferOperationBuilder;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, (0, findora_sdk_v2_core_1.getLedger)()];
+            case 1:
+                ledger = _a.sent();
+                return [4 /*yield*/, (0, exports.getBlockHeight)()];
+            case 2:
+                blockCount = _a.sent();
+                anonTransferOperationBuilder = ledger.AnonTransferOperationBuilder.new(blockCount);
+                return [2 /*return*/, anonTransferOperationBuilder];
+        }
+    });
+}); };
+exports.getAnonTransferOperationBuilder = getAnonTransferOperationBuilder;
 //# sourceMappingURL=builder.js.map

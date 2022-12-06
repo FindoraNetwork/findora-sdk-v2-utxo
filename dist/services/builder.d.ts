@@ -1,4 +1,4 @@
-import { ledgerTypes } from '@findora-network/findora-sdk-v2-core';
+import { ledgerTypes, AnonTransferOperationBuilder, TransactionBuilder } from '@findora-network/findora-sdk-v2-core';
 import { WalletKeypar } from '@findora-network/findora-sdk-v2-keypair';
 import * as fee from './fee';
 import { UtxoInputsInfo } from './utxoHelper';
@@ -27,3 +27,6 @@ export declare const buildTransferOperationWithFee: (walletInfo: WalletKeypar, a
 export declare const getFeeInputs: (walletInfo: WalletKeypar, excludeSids: number[], isBarToAbar: boolean) => Promise<ledgerTypes.FeeInputs>;
 export declare const buildTransferOperation: (walletInfo: WalletKeypar, recieversInfo: ReciverInfo[], assetCode: string) => Promise<ledgerTypes.TransferOperationBuilder>;
 export declare const buildTransferOperationV2: (walletInfo: WalletKeypar, recieversInfo: ReciverInfoV2) => Promise<ledgerTypes.TransferOperationBuilder>;
+export declare const getBlockHeight: () => Promise<bigint>;
+export declare const getTransactionBuilder: () => Promise<TransactionBuilder>;
+export declare const getAnonTransferOperationBuilder: () => Promise<AnonTransferOperationBuilder>;

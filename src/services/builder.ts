@@ -1,4 +1,10 @@
-import { getLedger, feeService, ledgerTypes } from '@findora-network/findora-sdk-v2-core';
+import {
+  getLedger,
+  feeService,
+  ledgerTypes,
+  AnonTransferOperationBuilder,
+  TransactionBuilder,
+} from '@findora-network/findora-sdk-v2-core';
 import { WalletKeypar } from '@findora-network/findora-sdk-v2-keypair';
 import { Network, NetworkEnvironment } from '@findora-network/findora-sdk-v2-network';
 import * as fee from './fee';
@@ -345,4 +351,41 @@ export const buildTransferOperationV2 = async (
   }
 
   return transferOperationBuilder;
+};
+
+export const getBlockHeight = async (): Promise<bigint> => {
+  const { response: stateCommitment, error } = await Network.getStateCommitment();
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  if (!stateCommitment) {
+    throw new Error('Could not receive response from state commitement call...');
+  }
+
+  const [_, height] = stateCommitment;
+  const blockCount = BigInt(height);
+
+  return blockCount;
+};
+
+export const getTransactionBuilder = async (): Promise<TransactionBuilder> => {
+  const ledger = await getLedger();
+
+  const blockCount = await getBlockHeight();
+
+  const transactionBuilder = ledger.TransactionBuilder.new(blockCount);
+
+  return transactionBuilder;
+};
+
+export const getAnonTransferOperationBuilder = async (): Promise<AnonTransferOperationBuilder> => {
+  const ledger = await getLedger();
+
+  const blockCount = await getBlockHeight();
+
+  const anonTransferOperationBuilder = ledger.AnonTransferOperationBuilder.new(blockCount);
+
+  return anonTransferOperationBuilder;
 };
