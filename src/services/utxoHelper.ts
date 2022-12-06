@@ -57,7 +57,7 @@ const sdkEnv = {
 
 NetworkEnvironment.init(sdkEnv);
 
-const mergeUtxoList = (arr1: AddUtxoItem[], arr2: AddUtxoItem[]) => {
+export const mergeUtxoList = (arr1: AddUtxoItem[], arr2: AddUtxoItem[]) => {
   const res = [];
 
   while (arr1.length && arr2.length) {
@@ -76,7 +76,7 @@ const mergeUtxoList = (arr1: AddUtxoItem[], arr2: AddUtxoItem[]) => {
   return res.concat(arr1, arr2);
 };
 
-const mergeSortUtxoList = (arr: AddUtxoItem[]): AddUtxoItem[] => {
+export const mergeSortUtxoList = (arr: AddUtxoItem[]): AddUtxoItem[] => {
   if (arr.length < 2) return arr;
   const middleIdx = Math.floor(arr.length / 2);
 

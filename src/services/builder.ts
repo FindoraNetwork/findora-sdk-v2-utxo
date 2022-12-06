@@ -11,7 +11,7 @@ const sdkEnv = {
 
 NetworkEnvironment.init(sdkEnv);
 
-interface FeeInputPayloadType {
+export interface FeeInputPayloadType {
   txoRef: ledgerTypes.TxoRef;
   assetRecord: ledgerTypes.ClientAssetRecord;
   ownerMemo: ledgerTypes.OwnerMemo | undefined;
@@ -24,6 +24,11 @@ export interface ReciverInfo {
   toPublickey: ledgerTypes.XfrPublicKey;
   assetBlindRules?: fee.AssetBlindRules;
 }
+
+export interface ReciverInfoV2 {
+  [key: string]: ReciverInfo[];
+}
+
 export const getEmptyTransferBuilder = async (): Promise<ledgerTypes.TransferOperationBuilder> => {
   const ledger = await getLedger();
 
@@ -303,10 +308,6 @@ export const buildTransferOperation = async (
 
   return transferOperationBuilder;
 };
-
-export interface ReciverInfoV2 {
-  [key: string]: ReciverInfo[];
-}
 
 // creates an istance of a TransferOperationBuilder to transfer tokens based on recieversInfo
 export const buildTransferOperationV2 = async (

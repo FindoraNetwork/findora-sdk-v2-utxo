@@ -47,7 +47,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getUtxoWithAmount = exports.addUtxoInputs = exports.getSendUtxo = exports.getSendUtxoForAmount = exports.addUtxo = exports.getUtxoItem = exports.decryptUtxoItem = exports.filterUtxoByCode = void 0;
+exports.getUtxoWithAmount = exports.addUtxoInputs = exports.getSendUtxo = exports.getSendUtxoForAmount = exports.addUtxo = exports.getUtxoItem = exports.decryptUtxoItem = exports.filterUtxoByCode = exports.mergeSortUtxoList = exports.mergeUtxoList = void 0;
 // import * as Network from '../api/network';
 var findora_sdk_v2_core_1 = require("@findora-network/findora-sdk-v2-core");
 var findora_sdk_v2_network_1 = require("@findora-network/findora-sdk-v2-network");
@@ -74,14 +74,16 @@ var mergeUtxoList = function (arr1, arr2) {
     }
     return res.concat(arr1, arr2);
 };
+exports.mergeUtxoList = mergeUtxoList;
 var mergeSortUtxoList = function (arr) {
     if (arr.length < 2)
         return arr;
     var middleIdx = Math.floor(arr.length / 2);
     var left = arr.splice(0, middleIdx);
     var right = arr.splice(0);
-    return mergeUtxoList(mergeSortUtxoList(left), mergeSortUtxoList(right));
+    return (0, exports.mergeUtxoList)((0, exports.mergeSortUtxoList)(left), (0, exports.mergeSortUtxoList)(right));
 };
+exports.mergeSortUtxoList = mergeSortUtxoList;
 var filterUtxoByCode = function (code, utxoDataList) {
     return utxoDataList.filter(function (assetItem) { var _a; return ((_a = assetItem === null || assetItem === void 0 ? void 0 : assetItem.body) === null || _a === void 0 ? void 0 : _a.asset_type) === code; });
 };
@@ -247,7 +249,7 @@ exports.getSendUtxoForAmount = getSendUtxoForAmount;
 var getSendUtxo = function (code, amount, utxoDataList) {
     var result = [];
     var filteredUtxoList = (0, exports.filterUtxoByCode)(code, utxoDataList);
-    var sortedUtxoList = mergeSortUtxoList(filteredUtxoList);
+    var sortedUtxoList = (0, exports.mergeSortUtxoList)(filteredUtxoList);
     var sum = BigInt(0);
     for (var _i = 0, sortedUtxoList_1 = sortedUtxoList; _i < sortedUtxoList_1.length; _i++) {
         var assetItem = sortedUtxoList_1[_i];

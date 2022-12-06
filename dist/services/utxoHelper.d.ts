@@ -33,6 +33,8 @@ export interface UtxoInputsInfo {
     inputParametersList: UtxoInputParameter[];
     inputAmount: BigInt;
 }
+export declare const mergeUtxoList: (arr1: AddUtxoItem[], arr2: AddUtxoItem[]) => AddUtxoItem[];
+export declare const mergeSortUtxoList: (arr: AddUtxoItem[]) => AddUtxoItem[];
 export declare const filterUtxoByCode: (code: string, utxoDataList: AddUtxoItem[]) => AddUtxoItem[];
 export declare const decryptUtxoItem: (sid: number, walletInfo: WalletKeypar, utxoData: NetworkTypes.UtxoResponse, memoData?: NetworkTypes.OwnedMemoResponse) => Promise<AddUtxoItem>;
 export declare const getUtxoItem: (sid: number, walletInfo: WalletKeypar) => Promise<AddUtxoItem>;
