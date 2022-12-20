@@ -258,7 +258,7 @@
 
 "@findora-network/findora-sdk-v2-core@https://github.com/FindoraNetwork/findora-sdk-v2-core.git#develop":
   version "0.1.0"
-  resolved "https://github.com/FindoraNetwork/findora-sdk-v2-core.git#7c969d5b929246d250016ab5d54b10ff51b018c8"
+  resolved "https://github.com/FindoraNetwork/findora-sdk-v2-core.git#730446ea484af2080837883cc9b55c396351d6ca"
   dependencies:
     bignumber.js "^9.0.1"
     dotenv "^10.0.0"
@@ -267,7 +267,7 @@
 
 "@findora-network/findora-sdk-v2-keypair@https://github.com/FindoraNetwork/findora-sdk-v2-keypair.git#develop":
   version "0.1.0"
-  resolved "https://github.com/FindoraNetwork/findora-sdk-v2-keypair.git#359500698b0d6448b7065e97ed5fc62d7fcc74c1"
+  resolved "https://github.com/FindoraNetwork/findora-sdk-v2-keypair.git#79a091d9277e3e70e0b2a5305c9f2d79e37bf193"
   dependencies:
     "@findora-network/findora-sdk-v2-core" "https://github.com/FindoraNetwork/findora-sdk-v2-core.git#develop"
     axios "^0.21.1"
@@ -277,7 +277,7 @@
 
 "@findora-network/findora-sdk-v2-network@https://github.com/FindoraNetwork/findora-sdk-v2-network.git#develop":
   version "0.1.0"
-  resolved "https://github.com/FindoraNetwork/findora-sdk-v2-network.git#5ae4eeaf808741d7411e46f06f73c26dfe7435f8"
+  resolved "https://github.com/FindoraNetwork/findora-sdk-v2-network.git#7fe249613618c963490fbac9bdbe983863425422"
   dependencies:
     "@findora-network/findora-sdk-v2-core" "https://github.com/FindoraNetwork/findora-sdk-v2-core.git#develop"
     axios "^0.21.1"
@@ -1358,7 +1358,7 @@ find-versions@^4.0.0:
 
 "findora-wallet-wasm@https://github.com/FindoraNetwork/wasm-js-bindings.git#develop":
   version "0.0.0"
-  resolved "https://github.com/FindoraNetwork/wasm-js-bindings.git#f00b3863b8f2c13b9329e9be8513a322c67094cf"
+  resolved "https://github.com/FindoraNetwork/wasm-js-bindings.git#b72bc8ab9e01a52bedd62fa04f1ce3da1df4a58e"
 
 flat-cache@^3.0.4:
   version "3.0.4"
